@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Sereni Tommaso</title>
+    <style>
+        /* Palette Editoriale Professionale */
+        :root {
+            --bg-color: #fcfaf7; 
+            --surface: #ffffff;
+            --text-main: #374151;
+            --text-heading: #111827;
+            --accent: #1e3a8a; 
+            --border: #d1d5db;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Font Serif per Titoli e Navigazione */
+        h1, h2, h3, h4, nav ul li a, .serif {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: var(--text-heading);
+            font-weight: normal;
+        }
+
+        /* Sidebar Minimalista */
+        nav {
+            width: 340px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        .nav-header {
+            border-bottom: 2px solid var(--text-heading);
+            padding-bottom: 25px;
+            margin-bottom: 35px;
+        }
+
+        .nav-header h1 {
+            font-size: 1.8rem;
+            margin: 0 0 8px 0;
+        }
+        
+        .nav-header p {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li { margin-bottom: 12px; }
+
+        nav ul li a {
+            color: var(--text-heading);
+            text-decoration: none;
+            font-size: 1.15rem; 
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #f3f4f6;
+        }
+
+        nav ul li a.active {
+            color: var(--accent);
+            background-color: #eff6ff;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Contenuto Principale */
+        main {
+            margin-left: 340px;
+            padding: 60px 100px;
+            width: calc(100% - 340px);
+            box-sizing: border-box;
+            max-width: 1200px;
+        }
+
+        section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .meta-tag {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* Layout Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .content-box { margin-bottom: 30px; }
+
+        /* Accordions Professionali */
+        details {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        summary {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--text-heading);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        
+        summary::after {
+            content: '+';
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        details[open] summary::after { content: '−'; }
+
+        .details-content {
+            padding: 20px 10px 10px 0;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* Liste formattate per le sezioni */
+        ul.list { 
+            padding-left: 20px; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        ul.list li { 
+            margin-bottom: 8px; 
+        }
+
+        /* Media Column */
+        .media-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .media-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        /* Immagini cliccabili */
+        .zoomable {
+            width: 100%;
+            height: 220px; /* Altezza fissa per farle tutte uguali in galleria */
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.2s;
+            display: block;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-doc {
+            display: block;
+            text-align: center;
+            background: var(--text-heading);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-doc:hover { background: var(--accent); }
+
+        /* Citazione ridimensionata a fine pagina */
+        .quote-container {
+            margin-top: 60px;
+            padding: 20px 25px;
+            border-left: 3px solid var(--accent);
+            background: transparent;
+            font-style: italic;
+            max-width: 600px;
+        }
+
+        blockquote {
+            font-family: Georgia, serif;
+            font-size: 1.05rem;
+            margin: 0;
+            line-height: 1.5;
+            color: #6b7280;
+        }
+
+        cite {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            text-transform: uppercase;
+            color: var(--text-main);
+        }
+
+        /* ====== MODALE PER LE IMMAGINI (Lightbox) ====== */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.85); 
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 85%;
+            max-height: 80vh;
+            border: 3px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 45px;
+            color: #f1f1f1;
+            font-size: 45px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-header">
+        <h1>Sereni Tommaso</h1>
+        <p>Anno di Prova 2025/2026</p>
+	<p>Classe di concorso AM12</p>
+    </div>
+    <ul>
+        <li><a href="#" onclick="showSection('intro')" class="active" id="link-intro">Introduzione</a></li>
+        <li><a href="#" onclick="showSection('geo3')" id="link-geo3">Esposizione Museale</a></li>
+        <li><a href="#" onclick="showSection('storia3')" id="link-storia3">Giornale WWII</a></li>
+        <li><a href="#" onclick="showSection('ita3')" id="link-ita3">Libro di Poesie</a></li>
+        <li><a href="#" onclick="showSection('geo2')" id="link-geo2">Gioco Similo</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- SEZIONE INTRODUZIONE -->
+    <section id="intro" class="active">
+        <span class="meta-tag">Relazione Finale</span>
+        <h2 class="section-title">Oltre la lezione frontale</h2>
+
+        <div class="content-box">
+            <h3 class="serif">Nota metodologica sulla presentazione</h3>
+            <p>Questa interfaccia web è stata progettata per documentare il percorso dell'anno di prova attraverso una navigazione non lineare. L'obiettivo è permettere alla commissione di muoversi fluidamente tra le diverse esperienze didattiche.</p>
+            <p>I tre pilastri di questo formato sono:</p>
+            <ul class="list">
+                <li><strong>Competenza Digitale (DigCompEdu):</strong> La produzione autonoma di un ambiente web.</li>
+                <li><strong>Esplorazione Non Lineare:</strong> Favorire un colloquio aperto rispetto ai centri d'interesse della commissione.</li>
+                <li><strong>Archivio Integrato:</strong> Raccogliere metodologie, riflessioni e prodotti degli alunni in un unico spazio.</li>
+            </ul>
+        </div>
+
+        <div class="quote-container">
+            <blockquote id="main-quote">
+                «Tutti gli usi della parola a tutti» mi sembra un buon motto, dal bel suono democratico. Non perché tutti siano artisti, ma perché nessuno sia schiavo.
+            </blockquote>
+            <cite>— Gianni Rodari</cite>
+        </div>
+    </section>
+
+    <!-- PROGETTO 1: GEOGRAFIA 3 -->
+    <section id="geo3">
+        <span class="meta-tag">Geografia | Classe Terza</span>
+        <h2 class="section-title">Esposizione Museale</h2>
+        
+        <div class="layout-grid">
+            <div class="content-box">
+                <details>
+                    <summary>Obiettivi</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Analizzare i caratteri fisici e antropici dei continenti extraeuropei.</li>
+                            <li>Sviluppare competenze di ricerca, sintesi e selezione delle fonti.</li>
+                            <li>Migliorare l'esposizione orale (Public Speaking) in un contesto parzialmente formale.</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Metodologia</summary>
+                    <div class="details-content">
+                        <p>L'attività ha utilizzato il <strong>Peer Teaching</strong> combinato al <strong>Role Playing</strong>:</p>
+                        <ul class="list">
+                            <li>Gli studenti sono stati divisi in gruppi ("curatori museali").</li>
+                            <li>Ogni gruppo ha allestito un punto informativo (stand) in classe.</li>
+                            <li>A rotazione, hanno svolto il ruolo di "guide" per i propri compagni.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Struttura dell'attività</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li><strong>Fase 1:</strong> Ricerca documentaria assistita sui continenti assegnati.</li>
+                            <li><strong>Fase 2:</strong> Allestimento fisico dei pannelli espositivi e dei materiali di supporto.</li>
+                            <li><strong>Fase 3:</strong> Simulazione dell'esposizione museale.</li>
+                            <li><strong>Fase 4:</strong> Redazione, impaginazione e stampa del catalogo ufficiale della mostra.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Riflessione didattica</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>L'assunzione di un ruolo reale ha abbassato l'ansia da prestazione tipica dell'interrogazione orale.</li>
+                            <li>Il coinvolgimento fisico nell'allestimento ha ridotto la percezione di "materia mnemonica" spesso associata alla geografia.</li>
+                            <li>Il catalogo stampato è diventato un artefatto cognitivo che gratifica il lavoro a lungo termine della classe.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="media-column">
+                <div class="media-box">
+                    <!-- Sostituisci il src con il percorso della tua immagine, es: src="img/esposizione.jpg" -->
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%3Crect%20fill%3D%22%23e5e7eb%22%20width%3D%22400%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%236b7280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E[FOTO ALLESTIMENTO IN CLASSE]%3C%2Ftext%3E%3C%2Fsvg%3E" alt="I ragazzi durante l'esposizione museale in classe" class="zoomable">
+                </div>
+                <div class="media-box">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%3Crect%20fill%3D%22%23e5e7eb%22%20width%3D%22400%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%236b7280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E[COPERTINA CATALOGO]%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Scansione o foto del catalogo cartaceo realizzato" class="zoomable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGETTO 2: STORIA 3 -->
+    <section id="storia3">
+        <span class="meta-tag">Storia | Classe Terza</span>
+        <h2 class="section-title">Giornale WWII</h2>
+        
+        <div class="layout-grid">
+            <div class="content-box">
+                <details>
+                    <summary>Obiettivi</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Comprendere la multiprospettività degli eventi storici.</li>
+                            <li>Strutturare un testo di tipologia giornalistica (titoli, occhielli, articoli di fondo).</li>
+                            <li>Analizzare e interpretare fonti primarie visive e testuali dell'epoca.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Metodologia</summary>
+                    <div class="details-content">
+                        <p>Impostazione basata sull'<strong>Apprendimento Cooperativo</strong> in piccoli gruppi:</p>
+                        <ul class="list">
+                            <li>Creazione di 5 "redazioni giornalistiche" indipendenti.</li>
+                            <li>Divisione chiara dei ruoli interni: direttore, redattore cronaca, impaginatore/grafico.</li>
+                            <li>Interdipendenza positiva: il voto è di redazione, valutando sia il processo che il prodotto.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Struttura dell'attività</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li><strong>Assegnazione:</strong> Una nazione chiave della WWII per ogni gruppo (es. USA, Germania, URSS...).</li>
+                            <li><strong>Ricerca:</strong> Selezione autonoma dei macro-eventi storici vissuti da quella nazione.</li>
+                            <li><strong>Stesura:</strong> Creazione di 3 pagine fronte/retro con articoli di cronaca, editoriali politici e pubblicità storiche.</li>
+                            <li><strong>Editing:</strong> Impaginazione tramite software digitali e stampa.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Riflessione didattica</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Scrivere la storia "mentre accade" ha generato grande empatia storica verso le popolazioni coinvolte.</li>
+                            <li>Ha permesso di integrare le competenze di Italiano (scrittura) con quelle di Storia (conoscenza dei fatti).</li>
+                            <li>La gestione dei tempi di consegna ("andare in stampa") ha responsabilizzato notevolmente i gruppi.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="media-column">
+                <div class="media-box">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%3Crect%20fill%3D%22%23e5e7eb%22%20width%3D%22400%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%236b7280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E[ANTEPRIMA IMMAGINE GIORNALE]%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Prima pagina del giornale storico" class="zoomable">
+                </div>
+                <!-- Il link per il PDF -->
+                <a href="doc/giornale.pdf" target="_blank" class="btn-doc">Apri PDF Giornale</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGETTO 3: ITALIANO 3 -->
+    <section id="ita3">
+        <span class="meta-tag">Italiano | Classe Terza</span>
+        <h2 class="section-title">Libro di Poesie</h2>
+        
+        <div class="layout-grid">
+            <div class="content-box">
+                <details>
+                    <summary>Obiettivi</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Riconoscere e utilizzare correttamente le principali figure retoriche e metriche.</li>
+                            <li>Elaborare testi poetici originali partendo da suggestioni o modelli dati.</li>
+                            <li>Scoprire il valore della poesia come mezzo di espressione delle proprie emozioni.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Metodologia</summary>
+                    <div class="details-content">
+                        <p>Per la parte di analisi tecnica, è stata applicata la metodologia <strong>Jigsaw</strong>:</p>
+                        <ul class="list">
+                            <li>Divisione in "Gruppi di origine".</li>
+                            <li>Formazione dei "Gruppi di esperti" (chi studia la rima, chi le metafore, chi un autore specifico).</li>
+                            <li>Ritorno al gruppo originario: ogni esperto insegna agli altri la propria parte.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Struttura dell'attività</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li><strong>Fase teorica:</strong> Studio degli "attrezzi del poeta" tramite Jigsaw.</li>
+                            <li><strong>Fase laboratoriale:</strong> Scrittura creativa in classe (ispirandosi a testi, suoni o immagini).</li>
+                            <li><strong>Fase editoriale:</strong> Selezione delle poesie migliori, impaginazione e creazione della raccolta antologica di classe.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Riflessione didattica</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Il passaggio immediato dalla teoria (analisi logico/retorica) alla pratica (scrittura creativa) ha dato senso alle regole studiate.</li>
+                            <li>L'insegnamento reciproco (Jigsaw) ha garantito l'attenzione di tutti, poiché ognuno era responsabile dell'apprendimento degli altri.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="media-column">
+                <div class="media-box">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%3Crect%20fill%3D%22%23e5e7eb%22%20width%3D%22400%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%236b7280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E[FOTO LIBRO DI POESIE]%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Il libro di poesie realizzato dai ragazzi" class="zoomable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGETTO 4: GEOGRAFIA 2 -->
+    <section id="geo2">
+        <span class="meta-tag">Geografia | Classe Seconda</span>
+        <h2 class="section-title">Gioco Similo: Europa</h2>
+        
+        <div class="layout-grid">
+            <div class="content-box">
+                <details>
+                    <summary>Obiettivi</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Memorizzare le posizioni, le capitali e le macro-caratteristiche degli Stati europei.</li>
+                            <li>Confrontare dati socio-economici, demografici e fisici estrapolando analogie e differenze.</li>
+                            <li>Educare al rispetto delle regole e al lavoro di squadra strategico.</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Metodologia</summary>
+                    <div class="details-content">
+                        <p>Applicazione dei principi della <strong>Gamification</strong> e della <strong>Didattica Ludica</strong>:</p>
+                        <ul class="list">
+                            <li>Il gioco non è inteso come premio finale, ma come strumento stesso dell'apprendimento e della verifica.</li>
+                            <li>Sfruttamento della meccanica "deduttiva" (scoprire un elemento segreto procedendo per esclusione basata su indizi).</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Struttura dell'attività</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li><strong>Fase 1: Preparazione (Maker).</strong> Gli studenti creano fisicamente le "Carte Stato", inserendo indicatori richiesti dal docente.</li>
+                            <li><strong>Fase 2: Regolamento.</strong> Spiegazione delle regole del gioco (ispirate al gioco in scatola <em>Similo</em>).</li>
+                            <li><strong>Fase 3: Gameplay.</strong> Torneo in classe. I ragazzi devono dedurre lo "Stato Segreto" interpretando gli indizi dati da un compagno ("Questo stato ha/non ha cose in comune con la carta giocata").</li>
+                        </ul>
+                    </div>
+                </details>
+                <details>
+                    <summary>Riflessione didattica</summary>
+                    <div class="details-content">
+                        <ul class="list">
+                            <li>Costringendo i ragazzi a giustificare ogni esclusione ("Escludo la Spagna perché l'indizio dice che non ha il mare"), si verifica la competenza acquisita senza il peso del "voto".</li>
+                            <li>L'errore viene depotenziato: sbagliare porta a perdere la partita, non a prendere un'insufficienza, stimolando la voglia di riprovare.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            <div class="media-column">
+                <div class="media-box">
+                    <img src="img/similo.jpg" alt="Mazzo di carte degli Stati Europei creato dai ragazzi" class="zoomable">
+                </div>
+                <div class="media-box">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%3Crect%20fill%3D%22%23e5e7eb%22%20width%3D%22400%22%20height%3D%22300%22%2F%3E%3Ctext%20fill%3D%22%236b7280%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3E[FOTO SESSIONE GIOCO]%3C%2Ftext%3E%3C%2Fsvg%3E" alt="I ragazzi durante la sessione di gioco Similo in classe" class="zoomable">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- IL MODALE (Lightbox) PER LE IMMAGINI -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="imgModalTarget">
+  <div id="caption"></div>
+</div>
+
+<script>
+    // --- Funzione per la navigazione delle sezioni ---
+    function showSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.getElementById('link-' + id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    // --- Funzionalità Modale per le Immagini (Lightbox) ---
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgModalTarget");
+    const captionText = document.getElementById("caption");
+    const chiudiModal = document.getElementsByClassName("close")[0];
+
+    // Seleziona tutte le immagini con la classe 'zoomable'
+    const images = document.querySelectorAll('.zoomable');
+    
+    images.forEach(img => {
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt; // Prende il testo dal tag "alt" dell'immagine
+        }
+    });
+
+    // Chiude il modale cliccando sulla X
+    chiudiModal.onclick = function() { 
+        modal.style.display = "none";
+    }
+
+    // Chiude il modale anche cliccando fuori dall'immagine
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+    
+    // Chiude il modale premendo il tasto ESC sulla tastiera
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" && modal.style.display === "block") {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>
