@@ -372,6 +372,44 @@
 		        padding: 70px 30px 60px 30px;
 		    }
 		}
+
+		/* === BIBLIOGRAFIA === */
+		.biblio-category {
+		    font-family: 'Helvetica Neue', sans-serif;
+		    font-size: 0.75rem;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    color: var(--accent);
+		    font-weight: bold;
+		    margin: 20px 0 10px 0;
+		    display: block;
+		}
+		.biblio-list {
+		    list-style: none;
+		    padding: 0;
+		    margin: 0 0 10px 0;
+		    display: grid;
+		    grid-template-columns: 1fr 1fr;
+		    gap: 0 30px;
+		}
+		.biblio-list li {
+		    padding: 7px 0 7px 12px;
+		    border-left: 2px solid var(--border);
+		    font-size: 0.9rem;
+		    line-height: 1.4;
+		    transition: border-color 0.2s ease;
+		}
+		.biblio-list li:hover {
+		    border-left-color: var(--accent);
+		}
+		.biblio-list.single-col {
+		    grid-template-columns: 1fr;
+		}
+		@media (max-width: 900px) {
+		    .biblio-list {
+		        grid-template-columns: 1fr;
+		    }
+		}
 		
 	</style>
 </head>
@@ -441,45 +479,47 @@
                 <div class="details-content">
                     <p>Le scelte didattiche documentate in questo portfolio si collocano all'interno del quadro normativo e pedagogico di riferimento per la scuola secondaria di primo grado.</p>
 					<ul class="list">
-                        <li>DM 254/2012 (Indicazioni Nazionali per il curricolo della scuola dell'infanzia e del primo ciclo d'istruzione). Definisce i traguardi di competenza disciplinare e trasversale e orienta la progettazione per competenze.</li>
-						<li>Raccomandazione del Consiglio dell'UE, 22 maggio 2018 (Competenze chiave per l'apprendimento permanente). Individua le otto competenze europee che guidano la progettazione di percorsi orientati alla cittadinanza attiva.</li>
-						<li>L. 92/2019 e DM 35/2020 (Introduzione dell'Educazione civica come disciplina curricolare trasversale). I progetti documentati integrano obiettivi di cittadinanza digitale, pace e corresponsabilità.</li>
-						<li>Legge 170/2010 (Norme in materia di DSA). Riferimento per le strategie di personalizzazione e gli strumenti compensativi adottati.</li>
-						<li>D.Lgs. 66/2017 e D.Lgs. 96/2019 (Inclusione scolastica degli alunni con disabilità). Cornice normativa per le scelte metodologiche orientate all'Universal Design for Learning.</li>
-						<li>D.Lgs. 62/2017 (Valutazione e certificazione delle competenze nel primo ciclo). Fondamento per l'adozione di rubriche di valutazione e prove autentiche.</li>
-						<li>Piano Nazionale Scuola Digitale (PNSD, DD 851/2015) e DigCompEdu (Redecker, 2017). Quadri di riferimento per lo sviluppo delle competenze digitali di docenti e studenti.</li>
-						<li>DM 66/2023 (Linee guida per la formazione iniziale e continua dei docenti). Riferimento per le Comunità di pratiche e il modello riflessivo adottato durante l'anno di prova.</li>
+                        <li>DM 254/2012 (<strong>Indicazioni Nazionali per il curricolo</strong> della scuola dell'infanzia e del primo ciclo d'istruzione). Definisce i traguardi di competenza disciplinare e trasversale e orienta la progettazione per competenze.</li>
+						<li>Raccomandazione del Consiglio dell'UE, 22 maggio 2018 (<strong>Competenze chiave per l'apprendimento permanente</strong>). Individua le otto competenze europee che guidano la progettazione di percorsi orientati alla cittadinanza attiva.</li>
+						<li>L. 92/2019 e DM 35/2020 (Introduzione dell'<strong>Educazione civica come disciplina curricolare trasversale</strong>). I progetti documentati integrano obiettivi di cittadinanza digitale, pace e corresponsabilità.</li>
+						<li>Legge 170/2010 (<strong>Norme in materia di DSA</strong>). Riferimento per le strategie di personalizzazione e gli strumenti compensativi adottati.</li>
+						<li>D.Lgs. 66/2017 e D.Lgs. 96/2019 (<strong>Inclusione scolastica degli alunni con disabilità</strong>). Cornice normativa per le scelte metodologiche orientate all'Universal Design for Learning.</li>
+						<li>D.Lgs. 62/2017 (<strong>Valutazione e certificazione delle competenze nel primo ciclo</strong>). Fondamento per l'adozione di rubriche di valutazione e prove autentiche.</li>
+						<li>Piano Nazionale Scuola Digitale (<strong>PNSD</strong>, DD 851/2015) e <strong>DigCompEdu</strong> (Redecker, 2017). Quadri di riferimento per lo sviluppo delle competenze digitali di docenti e studenti.</li>
+						<li>DM 66/2023 (<strong>Linee guida per la formazione iniziale e continua dei docenti</strong>). Riferimento per le Comunità di pratiche e il modello riflessivo adottato durante l'anno di prova.</li>
                     </ul>
                 </div>
             </details>
 
 			<details>
                 <summary>Bibliografia</summary>
-                <div class="details-content">
-					<ul class="list">
-						<li>P. Beltrami, <em>Gli strumenti della poesia</em>, Il Mulino, 2002</li>
-  						<li>I. Bernecich e S. Malfatti, <em>La poesia con il metodo WRW</em>, Erickson, 2025</li>
-						<li>B. Biggio, <em>Un'altra storia, vol. 3</em>, Fabbri editori, 2024</li>
-  						<li>T. De Mauro, <em>L'educazione linguistica democratica</em>, Laterza, 2024</li>
-						<li>F. Farinelli, O. Lieto,<em>Geolink, connessi col mondo</em>, Atlas, 2025</li>
-  						<li>C. Grataloup C., <em>Atlante storico mondiale</em>, L'ippocampo, 2023</li>
-						<li>C. Grataloup C., <em>Atlante storico della Terra</em>, L'ippocampo, 2023</li>
-  						<li>b. hooks, <em>Insegnare a trasgredire</em>, Meltemi, 2020</li>
-  						<li>D. Johnson - R. Johnson - E. Holubec, <em>Apprendimento cooperativo in classe. Migliorare il clima emotivo e il rendimento</em>, Erikson, 2015</li>
-  						<li>C. Raimo (a cura di), <em>Alfabeto della scuola democratica</em>, Laterza, 2024</li>
-  						<li>G. Rodari, <em>Grammatica della fantasia</em>, Einaudi, 2024</li>
-  						<li>G. Rodari, <em>Il libro degli errori</em>, Einaudi, 2026</li>
-						<li>R. Zordan, <em>Lettura oltre. Letteratura e teatro</em>, Fabbri editori, 2024</li>
-                    </ul>
-					<p>Relativamente ai testi poetici analizzati si fa riferimento alle seguenti raccolte:</p>
-					<ul class="list">
-  						<li>C. Carminati, <em>Viaggia verso. Poesie nelle tasche dei jeans</em>, Bompiani, 2023</li>
-  						<li>R. Dahl, <em>Versi perversi</em>, Salani, 2024</li>
-  						<li>F. Maraini, <em>Gnosi delle fanfole</em>, La nave di Teseo, 2019</li>
-  						<li>I. Rigoli, <em>A rifare il mondo</em>, Bompiani, 2022</li>
-						<li>Trilussa, <em>Poesia scelte</em>, Mondadori, 1999</li>
-					</ul>
-                </div>
+				<div class="details-content">
+				    <span class="biblio-category">Testi di riferimento</span>
+				    <ul class="biblio-list">
+				        <li>P. Beltrami, <em>Gli strumenti della poesia</em>, Il Mulino, 2002</li>
+				        <li>I. Bernecich e S. Malfatti, <em>La poesia con il metodo WRW</em>, Erickson, 2025</li>
+				        <li>B. Biggio, <em>Un'altra storia, vol. 3</em>, Fabbri editori, 2024</li>
+				        <li>T. De Mauro, <em>L'educazione linguistica democratica</em>, Laterza, 2024</li>
+				        <li>F. Farinelli, O. Lieto, <em>Geolink, connessi col mondo</em>, Atlas, 2025</li>
+				        <li>C. Grataloup, <em>Atlante storico mondiale</em>, L'ippocampo, 2023</li>
+				        <li>C. Grataloup, <em>Atlante storico della Terra</em>, L'ippocampo, 2023</li>
+				        <li>b. hooks, <em>Insegnare a trasgredire</em>, Meltemi, 2020</li>
+				        <li>D. Johnson, R. Johnson, E. Holubec, <em>Apprendimento cooperativo in classe</em>, Erikson, 2015</li>
+				        <li>C. Raimo (a cura di), <em>Alfabeto della scuola democratica</em>, Laterza, 2024</li>
+				        <li>G. Rodari, <em>Grammatica della fantasia</em>, Einaudi, 2024</li>
+				        <li>G. Rodari, <em>Il libro degli errori</em>, Einaudi, 2026</li>
+				        <li>R. Zordan, <em>Lettura oltre. Letteratura e teatro</em>, Fabbri editori, 2024</li>
+				    </ul>
+				
+				    <span class="biblio-category">Raccolte poetiche</span>
+				    <ul class="biblio-list single-col">
+				        <li>C. Carminati, <em>Viaggia verso. Poesie nelle tasche dei jeans</em>, Bompiani, 2023</li>
+				        <li>R. Dahl, <em>Versi perversi</em>, Salani, 2024</li>
+				        <li>F. Maraini, <em>Gnosi delle fanfole</em>, La nave di Teseo, 2019</li>
+				        <li>I. Rigoli, <em>A rifare il mondo</em>, Bompiani, 2022</li>
+				        <li>Trilussa, <em>Poesie scelte</em>, Mondadori, 1999</li>
+				    </ul>
+				</div>
             </details>
         </div>
 
