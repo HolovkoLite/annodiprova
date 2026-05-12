@@ -321,10 +321,66 @@
             text-decoration: none;
             cursor: pointer;
         }
-    </style>
+    
+		/* === HAMBURGER MENU === */
+		.hamburger {
+		    position: fixed;
+		    top: 18px;
+		    left: 18px;
+		    z-index: 100;
+		    background: var(--surface);
+		    border: 1px solid var(--border);
+		    border-radius: 4px;
+		    width: 40px;
+		    height: 40px;
+		    cursor: pointer;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		    gap: 5px;
+		    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+		    padding: 0;
+		}
+		.hamburger span {
+		    display: block;
+		    width: 20px;
+		    height: 2px;
+		    background: var(--text-heading);
+		    border-radius: 2px;
+		}
+		nav {
+		    transition: transform 0.3s ease-in-out;
+		}
+		main {
+		    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+		}
+		nav.closed {
+		    transform: translateX(-100%);
+		}
+		@media (min-width: 768px) {
+		    main.nav-closed {
+		        margin-left: 0;
+		        width: 100%;
+		        padding-left: 70px;
+		    }
+		}
+		@media (max-width: 767px) {
+		    main {
+		        margin-left: 0 !important;
+		        width: 100% !important;
+		        padding: 70px 30px 60px 30px;
+		    }
+		}
+		
+	</style>
 </head>
 <body>
-
+	<button class="hamburger" onclick="toggleNav()" aria-label="Apri/chiudi menu">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	</button>
 <nav>
     <div class="nav-header">
         <h1>Sereni Tommaso</h1>
@@ -623,12 +679,28 @@
 </div>
 
 <script>
-    function showSection(id) {
+    function toggleNav() {
+    	const nav = document.querySelector('nav');
+    	const main = document.querySelector('main');
+    	nav.classList.toggle('closed');
+    	if (window.innerWidth >= 768) {
+        	main.classList.toggle('nav-closed');
+    	}
+	}
+
+	if (window.innerWidth < 768) {
+    	document.querySelector('nav').classList.add('closed');
+	}
+	
+	function showSection(id) {
         document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('link-' + id).classList.add('active');
         window.scrollTo(0,0);
+			if (window.innerWidth < 768) {
+    		document.querySelector('nav').classList.add('closed');
+}
     }
 
     const modal = document.getElementById("imageModal");
