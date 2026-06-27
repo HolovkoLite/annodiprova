@@ -185,13 +185,34 @@
             font-size: 1.05rem;
         }
 
-		.summary-subitle {
-            padding: 10px 5px 5px 0;
-			margin-left: 15px;
-            color: var(--text-main);
-            font-size: 1.2rem;
-        }
 
+		/* Sottomenù annidati */
+		details details {
+		    border-bottom: none;
+		    padding: 8px 0 0 0;
+		    margin-top: 8px;
+		}
+		
+		details details summary {
+		    font-family: 'Helvetica Neue', sans-serif;
+		    font-size: 0.95rem;
+		    font-weight: 600;
+		    color: var(--accent);
+		    letter-spacing: 0.03em;
+		    text-transform: uppercase;
+		}
+		
+		details details summary::after {
+		    font-size: 1.1rem;
+		}
+		
+		details details .details-content {
+		    font-size: 1rem;
+		    padding: 12px 10px 6px 12px;
+		    border-left: 2px solid var(--accent);
+		    margin-top: 6px;
+		}
+		
         /* Liste formattate per le sezioni */
         ul.list { 
             padding-left: 20px; 
@@ -1007,18 +1028,15 @@
 										</ul>
 								</p>
 								<hr>
-								<p>
-									<details class="summary-subitle">
-										<summary>Prerequisiti</summary>
-											<div class="details-content">
-						                        <ul class="list">
-						                            <li>Conoscere le informazioni principali degli <b>Stati europei</b> e della geografia fisica, politica ed economina d'Europa.</li>
-													<li>Comprendere e <b>rispettare autonomamente le regole</b> di un gioco da tavolo.</li>
-													<li><b>Utilizzare strumenti da disegno</b> al fine di realizzare rapidamente un dato numero di carte da gioco.</li>
-						                        </ul>
-											</div>
-									</details>
-								</p>
+									<summary>Prerequisiti</summary>
+										<div class="details-content">
+						                    <ul class="list">
+						                        <li>Conoscere le informazioni principali degli <b>Stati europei</b> e della geografia fisica, politica ed economina d'Europa.</li>
+												<li>Comprendere e <b>rispettare autonomamente le regole</b> di un gioco da tavolo.</li>
+												<li><b>Utilizzare strumenti da disegno</b> al fine di realizzare rapidamente un dato numero di carte da gioco.</li>
+						                    </ul>
+										</div>
+								</details>
 							</div>	
 				</details>
 				
