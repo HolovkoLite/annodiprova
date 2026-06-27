@@ -197,9 +197,8 @@
 		    font-family: 'Helvetica Neue', sans-serif;
 		    font-size: 0.95rem;
 		    font-weight: 600;
-		    color: var(--accent);
+		    color: var(--text-heading);
 		    letter-spacing: 0.03em;
-		    text-transform: uppercase;
 		}
 		
 		details details summary::after {
@@ -211,6 +210,15 @@
 		    padding: 12px 10px 6px 12px;
 		    border-left: 2px solid var(--accent);
 		    margin-top: 6px;
+		}
+
+		details details summary::after {
+		    content: '+';
+		    color: var(--text-heading);
+		}
+		
+		details details[open] summary::after {
+		    content: '−';
 		}
 		
         /* Liste formattate per le sezioni */
